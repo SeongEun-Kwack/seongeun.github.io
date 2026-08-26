@@ -2805,3 +2805,26 @@ td {
   }
 }
 
+/* 2-7. Serration 데이터 입력 예시 — 왼쪽 카드 UI 강조 */
+.serration-data-slide .ui-layout {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+}
+
+.serration-data-slide .serration-ui-scale {
+  zoom: 1.7;
+  transform-origin: center center;
+}
+
+/* zoom으로 커진 요소가 그리드 영역을 과도하게 점유하지 않도록 보정 */
+.serration-data-slide .serration-ui-scale .asset {
+  width: 58.82%;
+  margin: 0 auto;
+}
+
+/* PDF 인쇄 시에도 확대 상태 유지 */
+@media print {
+  .serration-example-slide .serration-ui-scale {
+    zoom: 1.7;
+  }
+}

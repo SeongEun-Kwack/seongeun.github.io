@@ -1539,46 +1539,51 @@ window.slides = [
       </div>
     `
   },
-  {
-    eyebrow: "02. Mod Data System",
-    title: "2-7. 데이터 입력 예시 — Serration",
-    html: `
-      <div class="ui-layout">
+
+ {
+  eyebrow: "02. Mod Data System",
+  title: "2-7. 데이터 입력 예시 — Serration",
+  className: "serration-data-slide",
+  html: `
+    <div class="ui-layout">
+      <div class="serration-ui-scale">
         ${asset(
           "Serration 예시 모드 카드",
           "ModTable 입력값으로 생성한 카드 UI",
           "",
           serrationCard
         )}
+      </div>
 
-        <div>
-          ${table(
-            ["컬럼", "값"],
-            [
-              ["ModID(*)", "MOD_SERRATION_001"],
-              ["ModName", "Serration"],
-              ["ModName_KR(*)", "톱날"],
-              ["Rarity", "2 (희귀)"],
-              ["Polarity", "0 (마두라이)"],
-              ["EquipType", "1 (주무기)"],
-              ["SlotType", "0 (일반)"],
-              ["BaseDrain / DrainPerRank / MaxRank", "4 / 1 / 10"],
-              ["AbilityType", "Damage"],
-              ["BaseEffect / EffectPerRank", "15.0 / 15.0"],
-              ["ConflictGroup(*)", "CONFLICT_SERRATION"],
-              ["SetID(*) / IsTradable(*)", "NULL / TRUE"],
-              ["Description", "기본 피해량 증가"]
-            ],
-            "small"
-          )}
-            <div class="card" style="margin-top:1vw;">
-            <p>(*)표시 항목은 UI상에 표시되지 않음, 단 필요 데이터 참고
-              </p>
-          </div>
+      <div>
+        ${table(
+          ["컬럼", "값"],
+          [
+            ["ModID(*)", "MOD_SERRATION_001"],
+            ["ModName", "Serration"],
+            ["ModName_KR(*)", "톱날"],
+            ["Rarity", "2 (희귀)"],
+            ["Polarity", "0 (마두라이)"],
+            ["EquipType", "1 (주무기)"],
+            ["SlotType", "0 (일반)"],
+            ["BaseDrain / DrainPerRank / MaxRank", "4 / 1 / 10"],
+            ["AbilityType", "Damage"],
+            ["BaseEffect / EffectPerRank", "15.0 / 15.0"],
+            ["ConflictGroup(*)", "CONFLICT_SERRATION"],
+            ["SetID(*) / IsTradable(*)", "NULL / TRUE"],
+            ["Description", "기본 피해량 증가"]
+          ],
+          "small"
+        )}
+
+        <div class="card" style="margin-top:1vw;">
+          <p>(*)표시 항목은 UI상에 표시되지 않음, 단 필요 데이터 참고</p>
         </div>
       </div>
-    `
-  },
+    </div>
+  `
+},
+
   {
     eyebrow: "03. Mod Attachment System",
     title: "3-1. 슬롯 구조 / 3-2. 수용량(Capacity) 계산 규칙",
