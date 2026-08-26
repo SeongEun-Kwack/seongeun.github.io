@@ -307,10 +307,7 @@ function modLoadoutWireframe() {
 
   return `
     <div class="wf-loadout-guide">
-      <div
-        class="wf-screen"
-        style="flex:1 1 auto; min-height:0;"
-      >
+      <div class="wf-screen">
         <header
           class="wf-header"
           data-loadout-target="header"
@@ -353,8 +350,7 @@ function modLoadoutWireframe() {
                 type: "일반",
                 polarity: "V",
                 modName: "SERRATION",
-                drain: "14",
-                selected: true
+                drain: "14"
               })}
 
               ${slot({
@@ -411,23 +407,22 @@ function modLoadoutWireframe() {
             <div class="wf-preview">
               <div class="wf-preview-card">
                 <div>
-                  <strong>SERRATION</strong><br>
-                  <span>RANK 10 / 10</span><br>
-                  <span>기본 피해량 증가 +165%</span>
+                  <strong>장비 정보</strong><br>
+                  <span>주무기 · Rifle</span><br>
+                  <span>장착된 MOD 4 / 8</span>
                 </div>
               </div>
 
               <div class="wf-preview-info">
-                <strong>선택 슬롯 프리뷰</strong>
-
-                <p>슬롯 유형: 일반 슬롯</p>
-                <p>슬롯 극성: V (마두라이)</p>
-                <p>모드 극성: V (마두라이)</p>
+                <strong>기본 장착 상태</strong>
+                <p>일반 슬롯: 8</p>
+                <p>엑실러스 슬롯: 1 (잠김)</p>
+                <p>아케인 슬롯: 1 (잠김)</p>
 
                 <div class="wf-preview-calculation">
-                  <p>기본 소모량: 14</p>
-                  <p>극성 일치: ⌈14 × 0.5⌉ = 7</p>
-                  <p><b>장착 후 수용량: 46 / 60</b></p>
+                  <p>사용 수용량: 46 / 60</p>
+                  <p>남은 수용량: 14</p>
+                  <p><b>빈 슬롯을 선택해 MOD를 장착합니다.</b></p>
                 </div>
               </div>
             </div>
@@ -443,7 +438,7 @@ function modLoadoutWireframe() {
               class="wf-toolbar"
               data-loadout-target="toolbar"
             >
-              <button class="wf-filter" type="button">전체</button>
+              <button class="wf-filter is-active" type="button">전체</button>
               <button class="wf-filter" type="button">주무기</button>
               <button class="wf-sort" type="button">소모량 ↓</button>
 
@@ -459,32 +454,35 @@ function modLoadoutWireframe() {
                 name: "SERRATION",
                 rank: "10",
                 drain: "14",
-                polarity: "V",
-                compatible: true
+                polarity: "V"
               })}
 
               ${modItem({
                 name: "SPLIT CHAMBER",
                 rank: "10",
                 drain: "15",
-                polarity: "V",
-                compatible: true
+                polarity: "V"
               })}
 
               ${modItem({
                 name: "VITAL SENSE",
                 rank: "10",
                 drain: "12",
-                polarity: "—",
-                compatible: true
+                polarity: "—"
               })}
 
               ${modItem({
                 name: "POINT STRIKE",
                 rank: "10",
                 drain: "9",
-                polarity: "V",
-                compatible: true
+                polarity: "V"
+              })}
+
+              ${modItem({
+                name: "HEAVY CALIBER",
+                rank: "10",
+                drain: "14",
+                polarity: "V"
               })}
 
               ${modItem({
@@ -504,12 +502,21 @@ function modLoadoutWireframe() {
                 compatible: false,
                 disabled: true
               })}
+
+              ${modItem({
+                name: "FLOW",
+                rank: "5",
+                drain: "9",
+                polarity: "D",
+                compatible: false,
+                disabled: true
+              })}
             </div>
           </section>
         </div>
 
         <span class="wf-screen-note">
-          선택 슬롯 클릭 → 호환 모드만 필터링
+          슬롯 선택 → 호환 MOD 필터링 → 장착
         </span>
       </div>
 
@@ -520,7 +527,7 @@ function modLoadoutWireframe() {
         >
           <strong>상단 헤더</strong>
           <p>
-            장비명, 레벨, 수용량 숫자 + 바. <br>수용량 = (기본 레벨 × 리액터 보정) + 오라/스탠스 보너스.
+            장비명, 랭크, 현재 수용량과 수용량 게이지를 표시한다.
           </p>
         </div>
 
@@ -528,11 +535,10 @@ function modLoadoutWireframe() {
           class="wf-loadout-note"
           data-loadout-guide-for="slots"
         >
-          <strong>슬롯 행(중앙)</strong>
+          <strong>슬롯 영역</strong>
           <p>
-            총 10칸.
-            <br>오라 1칸, 일반 7칸, 엑실러스 1칸, 아케인 1칸 구성.
-            <br>슬롯에는 유형·극성·장착 MOD·Drain 표시.
+            Aura 1칸, 일반 슬롯 7칸, Exilus 1칸,
+            Arcane 1칸으로 구성한다.
           </p>
         </div>
 
@@ -540,10 +546,10 @@ function modLoadoutWireframe() {
           class="wf-loadout-note"
           data-loadout-guide-for="toolbar"
         >
-          <strong>필터 / 정렬 / 검색</strong>
+          <strong>필터 · 정렬 · 검색</strong>
           <p>
-            장비 유형 필터와 소모량·이름·랭크·세트 기준 정렬,
-            MOD 이름 텍스트 검색
+            장비 유형 필터, 소모량 정렬, 이름 검색으로
+            보유 MOD를 탐색한다.
           </p>
         </div>
 
@@ -551,10 +557,10 @@ function modLoadoutWireframe() {
           class="wf-loadout-note"
           data-loadout-guide-for="list"
         >
-          <strong>MOD 리스트</strong>
+          <strong>보유 MOD 목록</strong>
           <p>
-            보유 MOD의 이름, 랭크, 극성, 소모량,<br>
-            현재 선택 슬롯에 대한 호환 여부 표시
+            이름, 랭크, 극성, 소모량과
+            현재 장비에 대한 호환 여부를 표시한다.
           </p>
         </div>
 
@@ -562,10 +568,10 @@ function modLoadoutWireframe() {
           class="wf-loadout-note"
           data-loadout-guide-for="interaction"
         >
-          <strong>인터랙션</strong>
+          <strong>장착 플로우</strong>
           <p>
-            빈 슬롯을 클릭하면 SlotType과 EquipType에
-            호환되는 MOD만 목록에 필터링하여 표시
+            빈 슬롯을 선택하면 해당 슬롯과 장비에
+            호환되는 MOD를 기준으로 다음 화면을 연다.
           </p>
         </div>
       </aside>
@@ -592,9 +598,9 @@ function modSlotPreviewWireframe() {
         <div class="wf-header-right">
           <div class="wf-capacity">
             <span>수용량</span>
-            <strong>46 / 60</strong>
+            <strong>46 → 51 / 60</strong>
             <div class="wf-capacity-bar">
-              <div class="wf-capacity-fill"></div>
+              <div class="wf-capacity-fill wf-capacity-fill-preview"></div>
             </div>
           </div>
         </div>
@@ -631,13 +637,15 @@ function modSlotPreviewWireframe() {
               <em>12</em>
             </div>
 
-            <div class="wf-state-slot is-selected"
-            data-state-guide-target="selected-slot">
-            <span>일반</span>
-            <b>V</b>
-            <small>선택됨</small>
-            <em>+</em>
-          </div>
+            <div
+              class="wf-state-slot is-selected"
+              data-state-guide-target="selected-slot"
+            >
+              <span>일반</span>
+              <b>V</b>
+              <small>선택됨</small>
+              <em>+</em>
+            </div>
 
             <div class="wf-state-slot">
               <span>일반</span>
@@ -654,15 +662,18 @@ function modSlotPreviewWireframe() {
             <div class="wf-selected-slot-icon">V</div>
 
             <div class="wf-selected-slot-copy">
-              <strong>선택 슬롯 프리뷰</strong>
+              <strong>선택 슬롯</strong>
               <p>슬롯 유형: <b>일반 슬롯</b></p>
               <p>슬롯 극성: <b>V (마두라이)</b></p>
-              <p>장착 가능 MOD: <b>주무기 · Rifle</b></p>
+              <p>장비 유형: <b>주무기 · Rifle</b></p>
             </div>
 
             <div class="wf-selected-slot-rule">
-              <strong>선택 규칙</strong>
-              <p>선택한 슬롯의 SlotType과 장비 EquipType에 호환되는 MOD만 목록에 표시합니다.</p>
+              <strong>필터 규칙</strong>
+              <p>
+                일반 슬롯에 장착 가능한 Rifle MOD만 표시한다.
+                동일 MOD 및 ConflictGroup 중복 여부도 확인한다.
+              </p>
             </div>
           </div>
         </section>
@@ -670,65 +681,66 @@ function modSlotPreviewWireframe() {
         <section class="wf-state-mod-panel">
           <div class="wf-state-panel-heading">
             <div>
-              <strong>호환 가능 MOD</strong>
-              <span>일반 슬롯 · 주무기 MOD</span>
+              <strong>장착 프리뷰</strong>
+              <span>선택 MOD · POINT STRIKE</span>
             </div>
 
-            <span class="wf-result-count">12개</span>
+            <span class="wf-result-count">호환 가능</span>
           </div>
 
-          <div class="wf-toolbar">
-            <button class="wf-filter" type="button">전체</button>
-            <button class="wf-filter is-active" type="button">호환 가능</button>
-            <button class="wf-sort" type="button">소모량 ↓</button>
-            <input class="wf-search" type="text" placeholder="모드 검색">
-          </div>
-
-          <div class="wf-state-mod-grid">
-            <div class="wf-state-mod-item is-highlighted">
-              <span class="wf-state-mod-polarity">V</span>
-              <strong>SERRATION</strong>
-              <small>R10 · 14</small>
-            </div>
-
-            <div class="wf-state-mod-item">
-              <span class="wf-state-mod-polarity">V</span>
-              <strong>SPLIT CHAMBER</strong>
-              <small>R10 · 15</small>
-            </div>
-
-            <div class="wf-state-mod-item">
-              <span class="wf-state-mod-polarity">—</span>
-              <strong>VITAL SENSE</strong>
-              <small>R10 · 12</small>
-            </div>
-
-            <div class="wf-state-mod-item">
-              <span class="wf-state-mod-polarity">V</span>
+          <div class="wf-preview-mod-layout">
+            <div class="wf-preview-mod-card">
+              <span class="wf-preview-mod-rarity">◆ ◆ ◆</span>
+              <span class="wf-preview-mod-polarity">V</span>
+              <div class="wf-preview-mod-art">
+                <strong>MOD ART</strong>
+                <span>IconPath</span>
+              </div>
               <strong>POINT STRIKE</strong>
-              <small>R10 · 9</small>
+              <small>크리티컬 확률 증가 +150%</small>
+              <span>RANK 10 / 10 · Drain 9</span>
             </div>
 
-            <div class="wf-state-mod-item is-disabled">
-              <span class="wf-state-mod-polarity">D</span>
-              <strong>REDIRECTION</strong>
-              <small>워프레임 전용</small>
-            </div>
+            <div class="wf-preview-mod-info">
+              <div>
+                <span>대상 슬롯</span>
+                <strong>일반 · V 극성</strong>
+              </div>
 
-            <div class="wf-state-mod-item is-disabled">
-              <span class="wf-state-mod-polarity">V</span>
-              <strong>INTENSIFY</strong>
-              <small>워프레임 전용</small>
+              <div>
+                <span>극성 일치</span>
+                <strong>일치</strong>
+              </div>
+
+              <div>
+                <span>기본 소모량</span>
+                <strong>9</strong>
+              </div>
+
+              <div>
+                <span>실제 소모량</span>
+                <strong>⌈9 × 0.5⌉ = 5</strong>
+              </div>
+
+              <div class="wf-preview-capacity-change">
+                <span>수용량 변화</span>
+                <strong>46 / 60 → 51 / 60</strong>
+              </div>
             </div>
+          </div>
+
+          <div class="wf-preview-action-row">
+            <button type="button" class="is-primary">장착</button>
+            <button type="button">취소</button>
           </div>
 
           <div
             class="wf-state-help wf-state-guide-note"
             data-state-guide-for="selected-slot"
           >
-            <strong>선택 슬롯 필터 규칙</strong><br>
-            선택된 슬롯: 일반 슬롯 / V 극성<br>
-            Rifle 계열 MOD만 표시
+            <strong>선택 슬롯 → MOD 프리뷰</strong><br>
+            슬롯의 극성과 MOD 극성을 비교한 뒤 실제 Drain을 계산한다.
+            장착 전 예상 수용량도 함께 표시한다.
           </div>
         </section>
       </div>
@@ -1371,35 +1383,49 @@ window.slides = [
       </div>
     `
   },
-  {
-    eyebrow: "02. Mod Data System",
-    title: "2-1. 모드 카드 속성 정의",
-    html: `
-      <div class="ui-layout">
-        ${asset(
-          "모드 카드 데이터 구조",
-          "WARFRAME MOD 카드 UI와 데이터 필드 매핑",
-          "",
-          BasicCardGuide
+{
+  eyebrow: "02. Mod Data System",
+  title: "2-1. 모드 카드 속성 정의",
+  className: "mod-card-definition-slide",
+  html: `
+    <div class="ui-layout">
+      ${asset(
+        "모드 카드 속성 정의",
+        "UI 표시 요소와 ModTable 데이터 연결",
+        "",
+        BasicCardGuide
+      )}
+
+      <div class="ui-copy">
+        ${card(
+          "카드 UI와 데이터 필드 연결",
+          `
+            <p><b>Rarity</b> — 희귀도 및 카드 프레임 타입</p>
+            <p><b>Drain</b> — BaseDrain, DrainPerRank, CurrentRank</p>
+            <p><b>Polarity</b> — 슬롯 극성과 비교하는 심볼</p>
+            <p><b>Mod Art</b> — IconPath 기반 카드 이미지</p>
+            <p><b>Mod Name</b> — ModName / ModName_KR</p>
+            <p><b>Effect</b> — AbilityType, BaseEffect, EffectPerRank</p>
+            <p><b>Compatibility</b> — EquipType, SlotType</p>
+          `
         )}
 
-        <div class="ui-copy">
-          ${card("", "<p>예시: Serration (주무기 기본 피해량 증가 모드, 희귀 등급)</p>")}
-          ${card(
-            "",
-            `
-              <p>
-                <strong>표시·계산·규칙용 데이터</strong><br>
-                <b>식별/표기:</b> ModID, ModName_KR<br>
-                <b>강화 계산:</b> BaseDrain, DrainPerRank, MaxRank<br>
-                <b>장착 규칙:</b> ConflictGroup, SetID, IsTradable
-              </p>
-            `
-          )}
-        </div>
+        ${card(
+          "표시 규칙",
+          `
+            <p>
+              카드 UI에는 플레이어가 판단에 필요한 정보만 노출한다.
+              ID, ConflictGroup, 거래 가능 여부 같은 내부 검증 데이터는
+              UI에 직접 표시하지 않는다.
+            </p>
+          `
+        )}
       </div>
-    `
-  },
+    </div>
+  `
+},
+
+
   {
     eyebrow: "02. Mod Data System",
     title: "2-2. 소모 계산 공식 / 2-3. 효과 계산 공식",
@@ -1540,13 +1566,13 @@ window.slides = [
     `
   },
 
- {
+{
   eyebrow: "02. Mod Data System",
   title: "2-7. 데이터 입력 예시 — Serration",
   className: "serration-data-slide",
   html: `
     <div class="ui-layout">
-      <div class="serration-ui-scale">
+      <div class="serration-card-stage">
         ${asset(
           "Serration 예시 모드 카드",
           "ModTable 입력값으로 생성한 카드 UI",

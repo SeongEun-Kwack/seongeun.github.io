@@ -2804,27 +2804,236 @@ td {
     font-size: 1.05vw;
   }
 }
+/* =========================================================
+   2-1 / 2-7 Mod Card WireFrame
+   ========================================================= */
 
-/* 2-7. Serration 데이터 입력 예시 — 왼쪽 카드 UI 강조 */
+.mod-card-definition-slide .ui-layout {
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.5fr);
+  align-items: stretch;
+}
+
+.mod-card-definition-slide .asset {
+  padding: 1vw;
+}
+
+.mod-card-definition-slide .wf-mod-guide {
+  min-height: 100%;
+}
+
 .serration-data-slide .ui-layout {
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  align-items: stretch;
+}
+
+.serration-card-stage {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+}
+
+.serration-card-stage .asset {
+  width: 100%;
+  padding: 1.35vw;
+  border: 2px dashed #000;
+}
+
+.serration-card-stage .wf-mod-card-preview-wrap {
+  min-height: 0;
+}
+
+.serration-card-stage .wf-mod-card-preview {
+  width: min(58%, 320px) !important;
+  max-width: 320px !important;
+  min-width: 190px !important;
+}
+
+/* =========================================================
+   Slide 15 — MOD Equip Preview
+   ========================================================= */
+
+.wf-capacity-fill-preview {
+  width: 85%;
+}
+
+.wf-preview-mod-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: 0.65vw;
+  margin-top: 0.55vw;
+  padding: 0.65vw;
+  border: 1px solid #000;
+}
+
+.wf-preview-mod-card {
+  position: relative;
+  display: flex;
+  min-height: 10.2vw;
+  padding: 0.55vw;
+  border: 2px solid #000;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.serration-data-slide .serration-ui-scale {
-  zoom: 1.7;
-  transform-origin: center center;
+.wf-preview-mod-rarity {
+  position: absolute;
+  top: 0.38vw;
+  left: 50%;
+  font-size: 0.45vw;
+  letter-spacing: 0.1em;
+  transform: translateX(-50%);
 }
 
-/* zoom으로 커진 요소가 그리드 영역을 과도하게 점유하지 않도록 보정 */
-.serration-data-slide .serration-ui-scale .asset {
-  width: 58.82%;
-  margin: 0 auto;
+.wf-preview-mod-polarity {
+  position: absolute;
+  top: 0.38vw;
+  right: 0.5vw;
+  font-size: 0.75vw;
+  font-weight: 800;
 }
 
-/* PDF 인쇄 시에도 확대 상태 유지 */
-@media print {
-  .serration-example-slide .serration-ui-scale {
-    zoom: 1.7;
+.wf-preview-mod-art {
+  display: flex;
+  width: 55%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 0.45vw;
+  border: 1px solid #000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.wf-preview-mod-art strong {
+  font-size: 0.52vw;
+}
+
+.wf-preview-mod-art span,
+.wf-preview-mod-card small,
+.wf-preview-mod-card > span:last-child {
+  margin-top: 0.2vw;
+  font-size: 0.45vw;
+  line-height: 1.2;
+}
+
+.wf-preview-mod-card > strong {
+  font-size: 0.62vw;
+}
+
+.wf-preview-mod-info {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+}
+
+.wf-preview-mod-info > div {
+  min-height: 3.1vw;
+  padding: 0.45vw;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.wf-preview-mod-info span {
+  display: block;
+  margin-bottom: 0.22vw;
+  font-size: 0.48vw;
+}
+
+.wf-preview-mod-info strong {
+  display: block;
+  font-size: 0.58vw;
+  line-height: 1.25;
+}
+
+.wf-preview-mod-info .wf-preview-capacity-change {
+  grid-column: 1 / -1;
+  background: #f5f5f5;
+}
+
+.wf-preview-action-row {
+  display: flex;
+  gap: 0.4vw;
+  margin-top: 0.55vw;
+}
+
+.wf-preview-action-row button {
+  padding: 0.32vw 0.72vw;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  font-size: 0.54vw;
+  font-weight: 800;
+}
+
+.wf-preview-action-row button.is-primary {
+  background: #000;
+  color: #fff;
+}
+
+/* 기존 빨간 강조 제거: 전체 WireFrame 흑백 체계 통일 */
+.wf-slot-preview-screen .wf-state-slot.is-selected,
+.wf-slot-preview-screen .wf-state-mod-item.is-highlighted {
+  border-color: #000;
+  background: #f2f2f2;
+  box-shadow: none;
+}
+
+.wf-slot-preview-screen .wf-state-help,
+.wf-state-guide-note {
+  border-color: #000;
+  border-left-color: #000;
+  background: #fff;
+}
+
+/* 수용량 오류 화면도 같은 흑백 체계 사용 */
+.wf-capacity-error-screen .wf-state-slot.is-error-target,
+.wf-capacity-error-screen .wf-error-mod-card,
+.wf-capacity-error-screen .wf-error-message {
+  border-color: #000;
+  background: #f2f2f2;
+}
+
+.wf-capacity-error-screen .wf-capacity-fill.is-near-limit {
+  background: #000;
+}
+
+.wf-capacity-error-screen .wf-capacity-summary .is-error strong,
+.wf-capacity-error-screen .wf-error-calculation .is-error,
+.wf-capacity-error-screen .wf-error-message strong {
+  color: #000;
+}
+
+@media (max-width: 900px) {
+  .mod-card-definition-slide .ui-layout,
+  .serration-data-slide .ui-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .serration-card-stage .wf-mod-card-preview {
+    width: min(52vw, 320px) !important;
+  }
+
+  .wf-preview-mod-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .wf-preview-mod-card {
+    min-height: 24vw;
+  }
+
+  .wf-preview-mod-art strong,
+  .wf-preview-mod-card > strong,
+  .wf-preview-mod-info strong {
+    font-size: 1.45vw;
+  }
+
+  .wf-preview-mod-art span,
+  .wf-preview-mod-card small,
+  .wf-preview-mod-card > span:last-child,
+  .wf-preview-mod-info span,
+  .wf-preview-action-row button {
+    font-size: 1.15vw;
   }
 }
