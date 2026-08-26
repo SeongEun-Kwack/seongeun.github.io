@@ -877,6 +877,302 @@ function modCapacityErrorWireframe() {
   `;
 }
 
+function fusionModCard({
+  rank = 5,
+  effect = "+90%",
+  drain = 9,
+  muted = false
+} = {}) {
+  const dots = Array.from({ length: 10 }, function (_, index) {
+    return `<span class="${index < rank ? "is-filled" : ""}"></span>`;
+  }).join("");
+
+  return `
+    <div class="wf-fusion-mod-card ${muted ? "is-muted" : ""}">
+      <div class="wf-fusion-rarity">◆ ◆ ◆</div>
+
+      <div class="wf-fusion-art">
+        <strong>MOD ART</strong>
+        <span>IconPath</span>
+      </div>
+
+      <strong class="wf-fusion-card-name">SERRATION</strong>
+      <span class="wf-fusion-card-effect">기본 피해량 증가 ${effect}</span>
+      <span class="wf-fusion-card-meta">소모 ${drain} · 극성 V</span>
+
+      <div class="wf-fusion-rank-dots">
+        ${dots}
+      </div>
+
+      <span class="wf-fusion-rank-label">RANK ${rank} / 10</span>
+    </div>
+  `;
+}
+
+function modFusionWireframe() {
+  return `
+    <div class="wf-fusion-screen">
+      <header class="wf-fusion-header">
+        <div class="wf-fusion-header-left">
+          <button class="wf-back" type="button">←</button>
+          <strong class="wf-screen-title">MOD 합성</strong>
+        </div>
+
+        <div class="wf-fusion-resources">
+          <span>엔도 <b>45,000</b></span>
+          <span>크레딧 <b>2,500,000</b></span>
+        </div>
+      </header>
+
+      <div class="wf-fusion-body">
+        <section class="wf-fusion-card-panel">
+          <strong class="wf-fusion-panel-title">합성 대상 MOD</strong>
+          ${fusionModCard({
+            rank: 5,
+            effect: "+90%",
+            drain: 9
+          })}
+          <p class="wf-fusion-card-caption">
+            현재 선택된 모드의 랭크·효과·소모량을 표시합니다.
+          </p>
+        </section>
+
+        <section class="wf-fusion-settings-panel">
+          <div class="wf-fusion-panel-heading">
+            <strong>합성 설정</strong>
+            <span>현재 Rank 5</span>
+          </div>
+
+          <div class="wf-fusion-stat-grid">
+            <div>
+              <span>현재 효과</span>
+              <b>+90%</b>
+            </div>
+            <div>
+              <span>현재 소모</span>
+              <b>9</b>
+            </div>
+            <div>
+              <span>목표 Rank</span>
+              <b>8</b>
+            </div>
+            <div>
+              <span>예상 소모</span>
+              <b>12</b>
+            </div>
+          </div>
+
+          <div class="wf-fusion-slider-area">
+            <div class="wf-fusion-slider-label">
+              <strong>목표 랭크 선택</strong>
+              <span>5 → 8</span>
+            </div>
+
+            <div class="wf-fusion-slider-track">
+              <span class="wf-fusion-slider-fill"></span>
+              <i style="left:0%;"></i>
+              <i style="left:20%;"></i>
+              <i style="left:40%;"></i>
+              <i class="is-selected" style="left:60%;"></i>
+              <i style="left:80%;"></i>
+              <i style="left:100%;"></i>
+            </div>
+
+            <div class="wf-fusion-slider-values">
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+              <b>8</b>
+              <span>9</span>
+              <span>10</span>
+            </div>
+          </div>
+
+          <div class="wf-fusion-change-summary">
+            <span>예상 효과</span>
+            <strong>+90% → +135%</strong>
+          </div>
+
+          <table class="wf-fusion-cost-table">
+            <tr>
+              <th>랭크</th>
+              <th>5→6</th>
+              <th>6→7</th>
+              <th class="is-target">7→8</th>
+              <th class="is-future">8→9</th>
+              <th class="is-future">9→10</th>
+            </tr>
+            <tr>
+              <td>엔도</td>
+              <td>960</td>
+              <td>1,920</td>
+              <td class="is-target">3,840</td>
+              <td class="is-future">7,680</td>
+              <td class="is-future">15,360</td>
+            </tr>
+            <tr>
+              <td>크레딧</td>
+              <td>46,368</td>
+              <td>92,736</td>
+              <td class="is-target">185,472</td>
+              <td class="is-future">370,944</td>
+              <td class="is-future">741,888</td>
+            </tr>
+          </table>
+
+          <div class="wf-fusion-total-cost">
+            <div>
+              <span>누적 엔도 (5→8)</span>
+              <strong>6,720</strong>
+            </div>
+            <div>
+              <span>누적 크레딧 (5→8)</span>
+              <strong>324,576</strong>
+            </div>
+          </div>
+
+          <div class="wf-fusion-resource-check">
+            <p>엔도 잔여 <b>45,000 − 6,720 = 38,280</b> ✓</p>
+            <p>크레딧 잔여 <b>2,500,000 − 324,576 = 2,175,424</b> ✓</p>
+          </div>
+
+          <div class="wf-fusion-actions">
+            <button type="button" class="is-primary">합성 실행</button>
+            <button type="button">취소</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  `;
+}
+
+function modFusionConfirmWireframe() {
+  return `
+    <div class="wf-fusion-screen wf-fusion-confirm-screen">
+      <header class="wf-fusion-header is-dimmed">
+        <div class="wf-fusion-header-left">
+          <button class="wf-back" type="button">←</button>
+          <strong class="wf-screen-title">MOD 합성</strong>
+        </div>
+
+        <div class="wf-fusion-resources">
+          <span>엔도 <b>45,000</b></span>
+          <span>크레딧 <b>2,500,000</b></span>
+        </div>
+      </header>
+
+      <div class="wf-fusion-confirm-background">
+        <div class="wf-fusion-confirm-ghost-card"></div>
+        <div class="wf-fusion-confirm-ghost-panel"></div>
+      </div>
+
+      <div class="wf-fusion-popup-overlay">
+        <section class="wf-fusion-popup">
+          <strong class="wf-fusion-popup-title">합성 확인</strong>
+
+          <div class="wf-fusion-popup-row">
+            <span>대상 MOD</span>
+            <b>SERRATION</b>
+          </div>
+          <div class="wf-fusion-popup-row">
+            <span>랭크 변화</span>
+            <b>5 → 8</b>
+          </div>
+          <div class="wf-fusion-popup-row">
+            <span>효과 변화</span>
+            <b>+90% → +135%</b>
+          </div>
+          <div class="wf-fusion-popup-row">
+            <span>소모 변화</span>
+            <b>9 → 12</b>
+          </div>
+
+          <div class="wf-fusion-popup-divider"></div>
+
+          <div class="wf-fusion-popup-row">
+            <span>소비 엔도</span>
+            <b>6,720</b>
+          </div>
+          <div class="wf-fusion-popup-row">
+            <span>소비 크레딧</span>
+            <b>324,576</b>
+          </div>
+
+          <p class="wf-fusion-popup-warning">
+            합성은 되돌릴 수 없습니다.
+          </p>
+
+          <div class="wf-fusion-popup-actions">
+            <button type="button" class="is-primary">확인</button>
+            <button type="button">취소</button>
+          </div>
+        </section>
+      </div>
+    </div>
+  `;
+}
+
+function modFusionResultWireframe() {
+  return `
+    <div class="wf-fusion-screen wf-fusion-result-screen">
+      <header class="wf-fusion-header">
+        <div class="wf-fusion-header-left">
+          <button class="wf-back" type="button">←</button>
+          <strong class="wf-screen-title">MOD 합성</strong>
+        </div>
+
+        <div class="wf-fusion-resources">
+          <span>엔도 <b>38,280</b></span>
+          <span>크레딧 <b>2,175,424</b></span>
+        </div>
+      </header>
+
+      <div class="wf-fusion-result-body">
+        <div class="wf-fusion-animation-placeholder">
+          <strong>합성 애니메이션 영역</strong>
+          <span>카드 발광 → 랭크 점 순차 점등 → 강화 완료</span>
+        </div>
+
+        <strong class="wf-fusion-complete-title">합성 완료!</strong>
+
+        <div class="wf-fusion-before-after">
+          <div class="wf-fusion-before">
+            <span>BEFORE</span>
+            ${fusionModCard({
+              rank: 5,
+              effect: "+90%",
+              drain: 9,
+              muted: true
+            })}
+          </div>
+
+          <div class="wf-fusion-result-arrow">→</div>
+
+          <div class="wf-fusion-after">
+            <span>AFTER</span>
+            ${fusionModCard({
+              rank: 8,
+              effect: "+135%",
+              drain: 12
+            })}
+          </div>
+        </div>
+
+        <div class="wf-fusion-result-summary">
+          <span>RANK 5 → 8</span>
+          <span>효과 +90% → +135%</span>
+          <span>소모 9 → 12</span>
+        </div>
+
+        <button type="button" class="wf-fusion-result-confirm">
+          확인
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+
 /* =========================================================
    3. Slides (전체 슬라이드 데이터)
    ========================================================= */
@@ -1471,23 +1767,47 @@ window.slides = [
       </div>
     `
   },
-  {
-    eyebrow: "UI WireFrame",
-    title: "합성(Fusion) 화면 / 합성: 확인 팝업 & 결과",
-    html: `
-      <div class="grid-2 asset-pair">
-        ${asset(
-          "합성(Fusion) 화면: 전체 레이아웃",
-          "(역기획서) 워프레임 MOD 시스템-UI.pdf / p.9"
-        )}
-
-        ${asset(
-          "합성: 확인 팝업 & 결과",
-          "(역기획서) 워프레임 MOD 시스템-UI.pdf / p.10"
-        )}
+  
+{
+  eyebrow: "UI WireFrame",
+  title: "모드 합성: 목표 랭크 선택",
+  className: "ui-state-slide fusion-slide",
+  html: `
+    <div class="ui-layout">
+      <div class="asset">
+        ${modFusionWireframe()}
       </div>
-    `
-  },
+    </div>
+  `
+},
+{
+  eyebrow: "UI WireFrame",
+  title: "모드 합성: 실행 확인",
+  className: "ui-state-slide fusion-slide",
+  html: `
+    <div class="ui-layout">
+      <div class="asset">
+        ${modFusionConfirmWireframe()}
+      </div>
+    </div>
+  `
+},
+{
+  eyebrow: "UI WireFrame",
+  title: "모드 합성: 결과",
+  className: "ui-state-slide fusion-slide",
+  html: `
+    <div class="ui-layout">
+      <div class="asset">
+        ${modFusionResultWireframe()}
+      </div>
+    </div>
+  `
+},
+
+
+
+
   {
     eyebrow: "05. 변환 시스템 (Transmutation System)",
     title: "5-1. 변환 규칙",
@@ -2032,7 +2352,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return `
           <section class="slide ${index === currentSlide ? "active" : ""} ${slide.className || ""}">
             ${slide.eyebrow ? `<p class="eyebrow">${slide.eyebrow}</p>` : ""}
-            ${slide.title ? `## ${slide.title}` : ""}
+            ${slide.title ? `<h2>${slide.title}</h2>` : ""}
 
             <div class="slide-body">
               ${slide.html || ""}
