@@ -1,4 +1,4 @@
-/* =========================================================
+﻿/* =========================================================
    1. Templates (공통 헬퍼)
    ========================================================= */
 function asset(label, source, imagePath = "", wireframeHtml = "") {
@@ -861,6 +861,8 @@ function modCapacityErrorWireframe() {
               <p class="is-error">장착 후: <b>72 / 60</b></p>
             </div>
           </div>
+
+          <div class="wf-error-popup-label">POPUP</div>
 
           <div class="wf-error-message">
             <strong>수용량이 부족하여 MOD를 장착할 수 없습니다.</strong>

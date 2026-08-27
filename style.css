@@ -3037,3 +3037,203 @@ td {
     font-size: 1.15vw;
   }
 }
+
+/* =========================================================
+   UI WireFrame — 콘텐츠 높이 / footer 침범 방지
+   ========================================================= */
+
+/* 공통: footer(.page) 영역은 본문이 침범하지 않도록 확보 */
+.slide.active:has(.wf-state-screen) .slide-body,
+.slide.active:has(.serration-data-slide) .slide-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  padding-bottom: 3.6vw;
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------
+   14페이지: 모드 장착 · 슬롯 선택 프리뷰
+   dash-line 내부에서 세로 스크롤 가능하도록 처리
+   --------------------------------------------------------- */
+
+.ui-state-slide .ui-layout {
+  min-height: 0;
+}
+
+.ui-state-slide .asset {
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 1.2vw;
+  scrollbar-width: thin;
+  scrollbar-color: #000 #fff;
+}
+
+/* Chrome / Edge / Safari 스크롤바 */
+.ui-state-slide .asset::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ui-state-slide .asset::-webkit-scrollbar-track {
+  background: #fff;
+  border-left: 1px solid #000;
+}
+
+.ui-state-slide .asset::-webkit-scrollbar-thumb {
+  background: #000;
+  border: 1px solid #fff;
+}
+
+/* 내부 화면은 가로로 찌그러지지 않게 유지 */
+.ui-state-slide .wf-state-screen {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+/* 화면이 낮을 때, 프리뷰 화면 전체를 조금 압축 */
+@media (max-height: 650px) {
+  .ui-state-slide .asset {
+    padding: 0.8vw;
+  }
+
+  .ui-state-slide .wf-state-screen {
+    padding: 1.2vw;
+  }
+
+  .ui-state-slide .wf-state-body {
+    gap: 0.9vw;
+    margin-top: 0.8vw;
+  }
+
+  .ui-state-slide .wf-state-slots,
+  .ui-state-slide .wf-state-mod-panel {
+    padding: 0.7vw;
+  }
+
+  .ui-state-slide .wf-state-slot {
+    min-height: 5.8vw;
+  }
+
+  .ui-state-slide .wf-selected-slot-panel,
+  .ui-state-slide .wf-capacity-summary,
+  .ui-state-slide .wf-error-mod-preview {
+    gap: 0.65vw;
+    margin-top: 0.7vw;
+    padding: 0.7vw;
+  }
+
+  .ui-state-slide .wf-state-help {
+    margin-top: 0.55vw;
+    padding: 0.5vw;
+  }
+}
+
+/* ---------------------------------------------------------
+   10페이지: 2-7 Serration 데이터 입력 예시
+   테이블/참고문이 footer 영역으로 내려가지 않게 축소
+   --------------------------------------------------------- */
+
+.serration-data-slide .ui-layout {
+  flex: 1;
+  min-height: 0;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 1.4vw;
+}
+
+/* 오른쪽 테이블 + 참고문 영역 */
+.serration-data-slide .ui-copy {
+  min-height: 0;
+  padding-right: 0.35vw;
+  padding-bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #000 #fff;
+}
+
+.serration-data-slide .ui-copy::-webkit-scrollbar {
+  width: 7px;
+}
+
+.serration-data-slide .ui-copy::-webkit-scrollbar-track {
+  background: #fff;
+  border-left: 1px solid #000;
+}
+
+.serration-data-slide .ui-copy::-webkit-scrollbar-thumb {
+  background: #000;
+  border: 1px solid #fff;
+}
+
+/* 13행 데이터 테이블 높이 축소 */
+.serration-data-slide .small th,
+.serration-data-slide .small td {
+  padding: 0.22vw 0.38vw;
+  font-size: 0.72vw;
+  line-height: 1.22;
+}
+
+/* 하단 참고 박스가 불필요하게 커지지 않도록 제한 */
+.serration-data-slide .mod-data-note {
+  display: block;
+  height: auto !important;
+  min-height: 0 !important;
+  margin-top: 0.65vw;
+}
+
+.serration-data-slide .mod-data-note .card {
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0;
+  padding: 0.65vw 0.8vw;
+}
+
+.serration-data-slide .mod-data-note .card p {
+  font-size: 0.68vw;
+  line-height: 1.35;
+}
+
+/* 낮은 화면에서는 카드와 표를 한 단계 더 압축 */
+@media (max-height: 650px) {
+  .serration-data-slide .small th,
+  .serration-data-slide .small td {
+    padding: 0.16vw 0.32vw;
+    font-size: 0.66vw;
+    line-height: 1.12;
+  }
+
+  .serration-data-slide .mod-data-note {
+    margin-top: 0.45vw;
+  }
+
+  .serration-data-slide .mod-data-note .card {
+    padding: 0.5vw 0.65vw;
+  }
+
+  .serration-data-slide .mod-data-note .card p {
+    font-size: 0.62vw;
+    line-height: 1.25;
+  }
+}
+
+/* 15페이지 — 용량 초과 안내 팝업 레이블 */
+.wf-error-popup-label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 2.6vw;
+  padding: 0.55vw 0.8vw;
+
+  background: #000;
+  color: #fff;
+
+  font-family: Arial, sans-serif;
+  font-size: 0.62vw;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
