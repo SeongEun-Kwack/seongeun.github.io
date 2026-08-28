@@ -862,8 +862,6 @@ function modCapacityErrorWireframe() {
             </div>
           </div>
 
-          <div class="wf-error-popup-label">POPUP</div>
-
           <div class="wf-error-message">
             <strong>수용량이 부족하여 MOD를 장착할 수 없습니다.</strong>
             <p>
@@ -1185,6 +1183,361 @@ function modFusionResultWireframe() {
     </div>
   `;
 }
+
+function modTransmutationWireframe() {
+  return `
+    <div class="wf-transmute-screen">
+      <header class="wf-transmute-header">
+        <div class="wf-transmute-header-left">
+          <button class="wf-back" type="button">←</button>
+          <strong>MOD 변환</strong>
+          <span>변환 코어 사용</span>
+        </div>
+
+        <div class="wf-transmute-credit">
+          크레딧 <b>1,200,000</b>
+        </div>
+      </header>
+
+      <div class="wf-transmute-body">
+        <section class="wf-transmute-main">
+          <div class="wf-transmute-heading">
+            <div>
+              <strong>변환 재료 선택</strong>
+              <span>모드 3장 + 변환 코어 1개</span>
+            </div>
+
+            <span class="wf-transmute-status">3 / 4 슬롯 채움</span>
+          </div>
+
+          <div class="wf-transmute-slots">
+            <button
+              class="wf-transmute-slot is-filled"
+              type="button"
+              data-transmute-slot
+            >
+              <span class="wf-transmute-slot-index">01</span>
+              <span class="wf-transmute-rarity">◆</span>
+              <strong>AMMO DRUM</strong>
+              <small>COMMON · RANK 0</small>
+              <b>3,000 Cr</b>
+            </button>
+
+            <button
+              class="wf-transmute-slot is-filled"
+              type="button"
+              data-transmute-slot
+            >
+              <span class="wf-transmute-slot-index">02</span>
+              <span class="wf-transmute-rarity">◆ ◆</span>
+              <strong>FAST HANDS</strong>
+              <small>UNCOMMON · RANK 0</small>
+              <b>6,000 Cr</b>
+            </button>
+
+            <button
+              class="wf-transmute-slot is-empty"
+              type="button"
+              data-transmute-slot
+            >
+              <span class="wf-transmute-slot-index">03</span>
+              <span class="wf-transmute-plus">＋</span>
+              <strong>모드 선택</strong>
+              <small>RANK 0 모드만 가능</small>
+            </button>
+
+            <button
+              class="wf-transmute-slot is-core"
+              type="button"
+              data-transmute-slot
+            >
+              <span class="wf-transmute-slot-index">04 · CORE</span>
+              <span class="wf-transmute-core-symbol">◈</span>
+              <strong>변환 코어</strong>
+              <small>극성 고정 · 비용 면제</small>
+              <b>V</b>
+            </button>
+          </div>
+
+          <div class="wf-transmute-summary">
+            <div>
+              <span>입력 모드</span>
+              <strong>2장 + 코어 1개</strong>
+            </div>
+
+            <div>
+              <span>현재 비용</span>
+              <strong>9,000 Cr</strong>
+            </div>
+
+            <div>
+              <span>결과 극성</span>
+              <strong>V · 코어 고정</strong>
+            </div>
+
+            <button
+              type="button"
+              class="wf-transmute-run is-disabled"
+              disabled
+            >
+              변환 실행 · 모드 1장 더 필요
+            </button>
+          </div>
+        </section>
+
+        <section class="wf-transmute-inventory">
+          <div class="wf-transmute-heading">
+            <div>
+              <strong>변환 가능 MOD</strong>
+              <span>Rank 0 모드만 선택 가능</span>
+            </div>
+
+            <span class="wf-transmute-status">보유 18</span>
+          </div>
+
+          <div class="wf-transmute-mod-grid">
+            <button
+              type="button"
+              class="wf-transmute-mod"
+              data-transmute-mod
+              data-transmute-name="REACH"
+              data-transmute-cost="6,000 Cr"
+            >
+              <span>◆ ◆</span>
+              <strong>REACH</strong>
+              <small>RANK 0 · 6,000 Cr</small>
+            </button>
+
+            <button
+              type="button"
+              class="wf-transmute-mod"
+              data-transmute-mod
+              data-transmute-name="STRETCH"
+              data-transmute-cost="9,000 Cr"
+            >
+              <span>◆ ◆ ◆</span>
+              <strong>STRETCH</strong>
+              <small>RANK 0 · 9,000 Cr</small>
+            </button>
+
+            <button
+              type="button"
+              class="wf-transmute-mod"
+              data-transmute-mod
+              data-transmute-name="VITALITY"
+              data-transmute-cost="3,000 Cr"
+            >
+              <span>◆</span>
+              <strong>VITALITY</strong>
+              <small>RANK 0 · 3,000 Cr</small>
+            </button>
+
+            <button
+              type="button"
+              class="wf-transmute-mod is-disabled"
+              disabled
+            >
+              <span>◆ ◆</span>
+              <strong>STREAMLINE</strong>
+              <small>RANK 5 · 사용 불가</small>
+            </button>
+
+            <button
+              type="button"
+              class="wf-transmute-mod is-disabled"
+              disabled
+            >
+              <span>◆ ◆ ◆</span>
+              <strong>RIVEN MOD</strong>
+              <small>변환 불가 유형</small>
+            </button>
+
+            <button
+              type="button"
+              class="wf-transmute-mod is-disabled"
+              disabled
+            >
+              <span>◆ ◆ ◆</span>
+              <strong>PRIMED FLOW</strong>
+              <small>변환 불가 유형</small>
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <p class="wf-transmute-note">
+        모드 hover → 선택 가능 여부 확인 · 모드 click → 빈 슬롯 배치 · 슬롯 click → 재료 제거
+      </p>
+    </div>
+  `;
+}
+
+function modFormaWireframe() {
+  const formaSlot = function ({
+    index,
+    symbol = "○",
+    label = "없음",
+    selected = false,
+    special = "",
+    locked = false
+  } = {}) {
+    return `
+      <button
+        type="button"
+        class="
+          wf-forma-slot
+          ${selected ? "is-selected" : ""}
+          ${special ? `is-${special}` : ""}
+          ${locked ? "is-locked" : ""}
+        "
+        data-forma-slot
+        ${locked ? "disabled" : ""}
+      >
+        <span class="wf-forma-slot-index">${index}</span>
+        <strong class="wf-forma-symbol">${symbol}</strong>
+        <small>${label}</small>
+      </button>
+    `;
+  };
+
+  return `
+    <div class="wf-forma-screen">
+      <header class="wf-forma-header">
+        <div class="wf-forma-header-left">
+          <button class="wf-back" type="button">←</button>
+          <strong>포르마 극성 부여</strong>
+        </div>
+
+        <div class="wf-forma-count">
+          포르마 <b>×12</b>
+        </div>
+      </header>
+
+      <div class="wf-forma-body">
+        <section class="wf-forma-equipment">
+          <div>
+            <span>대상 장비</span>
+            <strong>BRATON PRIME</strong>
+          </div>
+
+          <div>
+            <span>장비 상태</span>
+            <strong>랭크 30 · 카탈리스트 적용</strong>
+          </div>
+
+          <div>
+            <span>누적 포르마</span>
+            <strong>2회</strong>
+          </div>
+        </section>
+
+        <section class="wf-forma-slot-panel">
+          <div class="wf-forma-heading">
+            <div>
+              <strong>극성을 변경할 슬롯을 선택하세요</strong>
+              <span>선택 슬롯은 굵은 테두리와 반전으로 표시됩니다.</span>
+            </div>
+
+            <span class="wf-forma-selected-label">선택: 슬롯 04</span>
+          </div>
+
+          <div class="wf-forma-slot-row">
+            ${formaSlot({
+              index: "AURA",
+              symbol: "V",
+              label: "마두라이",
+              special: "aura"
+            })}
+
+            <span class="wf-forma-divider"></span>
+
+            ${formaSlot({ index: "01", symbol: "V", label: "마두라이" })}
+            ${formaSlot({ index: "02", symbol: "V", label: "마두라이" })}
+            ${formaSlot({ index: "03", symbol: "—", label: "나라몬" })}
+            ${formaSlot({
+              index: "04",
+              symbol: "—",
+              label: "나라몬",
+              selected: true
+            })}
+            ${formaSlot({ index: "05", symbol: "○", label: "없음" })}
+            ${formaSlot({ index: "06", symbol: "○", label: "없음" })}
+            ${formaSlot({ index: "07", symbol: "○", label: "없음" })}
+            ${formaSlot({ index: "08", symbol: "○", label: "없음" })}
+
+            <span class="wf-forma-divider"></span>
+
+            ${formaSlot({
+              index: "EXILUS",
+              symbol: "○",
+              label: "잠김",
+              special: "exilus",
+              locked: true
+            })}
+          </div>
+        </section>
+
+        <section class="wf-forma-choice-layout">
+          <div class="wf-forma-choice-panel">
+            <div class="wf-forma-heading">
+              <div>
+                <strong>슬롯 04 · 극성 선택</strong>
+                <span>현재 극성: — 나라몬</span>
+              </div>
+            </div>
+
+            <div class="wf-forma-polarity-grid">
+              <button type="button" class="wf-forma-polarity" data-forma-polarity data-symbol="V">
+                <b>V</b><span>마두라이</span>
+              </button>
+
+              <button type="button" class="wf-forma-polarity" data-forma-polarity data-symbol="D">
+                <b>D</b><span>바자린</span>
+              </button>
+
+              <button type="button" class="wf-forma-polarity is-current" data-forma-polarity data-symbol="—">
+                <b>—</b><span>나라몬 · 현재</span>
+              </button>
+
+              <button type="button" class="wf-forma-polarity" data-forma-polarity data-symbol="=">
+                <b>=</b><span>제누릭</span>
+              </button>
+
+              <button type="button" class="wf-forma-polarity" data-forma-polarity data-symbol="R">
+                <b>R</b><span>우나이루</span>
+              </button>
+
+              <button type="button" class="wf-forma-polarity" data-forma-polarity data-symbol="Y">
+                <b>Y</b><span>펜자가</span>
+              </button>
+
+              <button type="button" class="wf-forma-polarity is-disabled" disabled>
+                <b>U</b><span>움브라 포르마 필요</span>
+              </button>
+
+              <button type="button" class="wf-forma-polarity" data-forma-polarity data-symbol="○">
+                <b>○</b><span>극성 제거</span>
+              </button>
+            </div>
+          </div>
+
+          <aside class="wf-forma-warning">
+            <span class="wf-forma-popup-label">POPUP</span>
+            <strong>포르마 적용 시 장비 랭크가 0으로 초기화됩니다.</strong>
+            <p>장착된 모든 MOD가 해제됩니다.</p>
+            <p>오로킨 카탈리스트 효과는 유지됩니다.</p>
+
+            <div class="wf-forma-actions">
+              <button type="button" class="is-primary">적용</button>
+              <button type="button">취소</button>
+            </div>
+          </aside>
+        </section>
+      </div>
+    </div>
+  `;
+}
+
 
 
 /* =========================================================
@@ -1890,79 +2243,32 @@ window.slides = [
       </div>
     `
   },
-  {
-    eyebrow: "05. 변환 시스템 (Transmutation System)",
-    title: "5-2. 변환 코어 / 변환 UI",
-    html: `
-      <div class="ui-layout">
-        ${asset(
-          "변환(Transmutation) 화면: 전체 레이아웃 / 변환 결과: 애니메이션 & 획득",
-          "(역기획서) 워프레임 MOD 시스템-UI.pdf / p.11–12"
-        )}
-
-        <div class="ui-copy">
-          ${card(
-            "모드 대체",
-            "<p>4장 중 1슬롯을 코어로 채움 (모드 3장 + 코어 1개)</p>"
-          )}
-
-          ${card(
-            "극성 고정",
-            "<p>결과 모드의 극성을 코어의 극성으로 확정</p>"
-          )}
-
-          ${card(
-            "비용 면제",
-            "<p>코어가 차지하는 슬롯의 크레딧 비용 0</p>"
-          )}
-
-          ${card(
-            "인터랙 션",
-            "<p>모드 클릭 → 빈 슬롯에 배치. 슬롯 클릭 → 모드 제거. [변환 실행] → 결과 화면(Slide 07).</p>"
-          )}
-        </div>
+ {
+  eyebrow: "05. 변환 시스템 (Transmutation System)",
+  title: "5-2. 변환 코어 / 변환 UI",
+  className: "ui-state-slide transmute-slide",
+  html: `
+    <div class="ui-layout">
+      <div class="asset">
+        ${modTransmutationWireframe()}
       </div>
-    `
-  },
-  {
-    eyebrow: "06. 포르마 시스템 (Forma System)",
-    title: "6-1. 포르마 규칙 / 포르마 UI",
-    html: `
-      <div class="ui-layout">
-        ${asset(
-          "포르마 극성 부여: 슬롯 선택 / 포르마: 극성 선택 & 적용 경고",
-          "(역기획서) 워프레임 MOD 시스템-UI.pdf / p.13–14"
-        )}
+    </div>
+  `
+},
 
-        <div class="ui-copy">
-          ${card(
-            "",
-            "<p>포르마는 장비 슬롯의 극성을 원하는 것으로 변경하는 소모 아이템이다.</p>"
-          )}
-
-          ${card(
-            "",
-            "<p>대상 장비의 레벨이 30(만렙)이어야 하며, 포르마 아이템을 1개 이상 보유해야 한다.</p>"
-          )}
-
-          ${card(
-            "",
-            "<p>선택한 슬롯의 극성이 지정한 극성으로 변경된다. 장비 레벨이 0으로 리셋되지만, 오로킨 카탈리스트/리액터 효과는 유지된다. 기존 장착 모드는 모두 해제된다.</p>"
-          )}
-
-          ${card(
-            "",
-            "<p>동일 장비에 포르마 사용 횟수 제한은 없다.</p>"
-          )}
-
-          ${card(
-            "",
-            "<p>특수 포르마: 움브라 포르마(움브라 극성 전용), 오라 포르마(오라 슬롯 공용 극성), 스탠스 포르마(스탠스 슬롯 공용 극성)</p>"
-          )}
-        </div>
+ {
+  eyebrow: "06. 포르마 시스템 (Forma System)",
+  title: "6-1. 포르마 규칙 / 포르마 UI",
+  className: "ui-state-slide forma-slide",
+  html: `
+    <div class="ui-layout">
+      <div class="asset">
+        ${modFormaWireframe()}
       </div>
-    `
-  },
+    </div>
+  `
+},
+
   {
     eyebrow: "07. Special Mods",
     title: "특수 모드(1)",
@@ -2445,6 +2751,105 @@ document.addEventListener("DOMContentLoaded", function () {
     if (event.key === "End") {
       event.preventDefault();
       showSlide(slides.length - 1);
+    }
+  });
+  deck.addEventListener("click", function (event) {
+    const transmuteMod = event.target.closest("[data-transmute-mod]");
+    const transmuteSlot = event.target.closest("[data-transmute-slot]");
+    const formaSlot = event.target.closest("[data-forma-slot]");
+    const formaPolarity = event.target.closest("[data-forma-polarity]");
+
+    /* 변환 가능 MOD 클릭 → 비어 있는 슬롯에 배치 */
+    if (transmuteMod && !transmuteMod.disabled) {
+      const screen = transmuteMod.closest(".wf-transmute-screen");
+      const emptySlot = screen.querySelector(".wf-transmute-slot.is-empty");
+
+      if (!emptySlot) return;
+
+      const name = transmuteMod.dataset.transmuteName;
+      const cost = transmuteMod.dataset.transmuteCost;
+
+      emptySlot.classList.remove("is-empty");
+      emptySlot.classList.add("is-filled");
+      emptySlot.innerHTML = `
+        <span class="wf-transmute-slot-index">03</span>
+        <span class="wf-transmute-rarity">◆ ◆</span>
+        <strong>${name}</strong>
+        <small>RANK 0 · 선택됨</small>
+        <b>${cost}</b>
+      `;
+
+      transmuteMod.classList.add("is-selected");
+
+      const status = screen.querySelector(".wf-transmute-status");
+      const runButton = screen.querySelector(".wf-transmute-run");
+
+      if (status) status.textContent = "4 / 4 슬롯 채움";
+      if (runButton) {
+        runButton.disabled = false;
+        runButton.classList.remove("is-disabled");
+        runButton.textContent = "변환 실행";
+      }
+
+      return;
+    }
+
+    /* 채워진 일반 슬롯 클릭 → 비어 있는 슬롯으로 복귀 */
+    if (
+      transmuteSlot &&
+      transmuteSlot.classList.contains("is-filled") &&
+      !transmuteSlot.classList.contains("is-core")
+    ) {
+      const slotIndex = transmuteSlot.querySelector(".wf-transmute-slot-index")?.textContent || "03";
+
+      transmuteSlot.className = "wf-transmute-slot is-empty";
+      transmuteSlot.innerHTML = `
+        <span class="wf-transmute-slot-index">${slotIndex}</span>
+        <span class="wf-transmute-plus">＋</span>
+        <strong>모드 선택</strong>
+        <small>RANK 0 모드만 가능</small>
+      `;
+
+      return;
+    }
+
+    /* 포르마 슬롯 클릭 → 선택 상태 변경 */
+    if (formaSlot && !formaSlot.disabled) {
+      const screen = formaSlot.closest(".wf-forma-screen");
+
+      screen.querySelectorAll("[data-forma-slot]").forEach(function (slot) {
+        slot.classList.remove("is-selected");
+      });
+
+      formaSlot.classList.add("is-selected");
+
+      const selectedLabel = screen.querySelector(".wf-forma-selected-label");
+      const index = formaSlot.querySelector(".wf-forma-slot-index")?.textContent || "";
+
+      if (selectedLabel) {
+        selectedLabel.textContent = `선택: 슬롯 ${index}`;
+      }
+
+      return;
+    }
+
+    /* 포르마 극성 클릭 → 선택 상태와 선택 슬롯 극성 변경 */
+    if (formaPolarity && !formaPolarity.disabled) {
+      const screen = formaPolarity.closest(".wf-forma-screen");
+      const symbol = formaPolarity.dataset.formaSymbol;
+
+      screen.querySelectorAll("[data-forma-polarity]").forEach(function (button) {
+        button.classList.remove("is-selected");
+      });
+
+      formaPolarity.classList.add("is-selected");
+
+      const selectedSlot = screen.querySelector(".wf-forma-slot.is-selected");
+      const selectedSymbol = selectedSlot?.querySelector(".wf-forma-symbol");
+
+      if (selectedSymbol && symbol) {
+        selectedSymbol.textContent = symbol;
+      }
     }
   });
 

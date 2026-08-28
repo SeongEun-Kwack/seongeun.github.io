@@ -3237,3 +3237,523 @@ td {
   line-height: 1;
 }
 
+/* =========================================================
+   Slide 22 — Transmutation UI
+   ========================================================= */
+
+.transmute-slide .asset,
+.forma-slide .asset {
+  align-items: stretch !important;
+  justify-content: stretch !important;
+  padding: 1vw !important;
+  overflow: hidden !important;
+}
+
+.wf-transmute-screen,
+.wf-forma-screen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  font-family: Arial, "Noto Sans KR", sans-serif;
+}
+
+.wf-transmute-screen *,
+.wf-forma-screen * {
+  box-sizing: border-box;
+}
+
+.wf-transmute-header,
+.wf-forma-header {
+  display: flex;
+  min-height: 3.2vw;
+  padding: 0.45vw 0.7vw;
+  border-bottom: 1px solid #000;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wf-transmute-header-left,
+.wf-forma-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.55vw;
+}
+
+.wf-transmute-header-left strong,
+.wf-forma-header-left strong {
+  font-size: 0.8vw;
+  font-weight: 800;
+}
+
+.wf-transmute-header-left span,
+.wf-transmute-credit,
+.wf-forma-count {
+  font-size: 0.54vw;
+  font-weight: 700;
+}
+
+.wf-transmute-credit,
+.wf-forma-count {
+  padding: 0.28vw 0.5vw;
+  border: 1px solid #000;
+}
+
+.wf-transmute-body {
+  display: grid;
+  flex: 1;
+  min-height: 0;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 0.7vw;
+  padding: 0.7vw;
+}
+
+.wf-transmute-main,
+.wf-transmute-inventory,
+.wf-forma-equipment,
+.wf-forma-slot-panel,
+.wf-forma-choice-panel,
+.wf-forma-warning {
+  border: 1px solid #000;
+}
+
+.wf-transmute-main,
+.wf-transmute-inventory {
+  min-height: 0;
+  padding: 0.65vw;
+}
+
+.wf-transmute-heading,
+.wf-forma-heading {
+  display: flex;
+  padding-bottom: 0.45vw;
+  border-bottom: 1px solid #000;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.wf-transmute-heading strong,
+.wf-forma-heading strong {
+  display: block;
+  font-size: 0.7vw;
+  font-weight: 800;
+}
+
+.wf-transmute-heading span,
+.wf-forma-heading span,
+.wf-transmute-status {
+  font-size: 0.48vw;
+  line-height: 1.3;
+}
+
+.wf-transmute-status,
+.wf-forma-selected-label {
+  padding: 0.22vw 0.38vw;
+  border: 1px solid #000;
+  font-size: 0.48vw;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.wf-transmute-slots {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.45vw;
+  margin-top: 0.65vw;
+}
+
+.wf-transmute-slot {
+  position: relative;
+  display: flex;
+  min-height: 9vw;
+  padding: 0.55vw;
+  border: 1px solid #000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.14s ease, color 0.14s ease, border-width 0.14s ease;
+}
+
+.wf-transmute-slot:hover {
+  border-width: 2px;
+  background: #000;
+  color: #fff;
+}
+
+.wf-transmute-slot.is-core {
+  border-style: dashed;
+}
+
+.wf-transmute-slot.is-core:hover {
+  background: #f2f2f2;
+  color: #000;
+}
+
+.wf-transmute-slot-index {
+  position: absolute;
+  top: 0.3vw;
+  left: 0.35vw;
+  font-size: 0.42vw;
+  font-weight: 800;
+}
+
+.wf-transmute-rarity,
+.wf-transmute-core-symbol {
+  margin-bottom: 0.35vw;
+  font-size: 0.65vw;
+}
+
+.wf-transmute-slot strong {
+  font-size: 0.58vw;
+}
+
+.wf-transmute-slot small {
+  margin-top: 0.2vw;
+  font-size: 0.42vw;
+}
+
+.wf-transmute-slot b {
+  position: absolute;
+  right: 0.35vw;
+  bottom: 0.3vw;
+  font-size: 0.42vw;
+}
+
+.wf-transmute-plus {
+  font-size: 1.35vw;
+  font-weight: 300;
+}
+
+.wf-transmute-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4vw;
+  margin-top: 0.65vw;
+}
+
+.wf-transmute-summary > div {
+  padding: 0.45vw;
+  border: 1px solid #000;
+}
+
+.wf-transmute-summary span,
+.wf-transmute-summary strong {
+  display: block;
+}
+
+.wf-transmute-summary span {
+  font-size: 0.43vw;
+}
+
+.wf-transmute-summary strong {
+  margin-top: 0.15vw;
+  font-size: 0.55vw;
+}
+
+.wf-transmute-run {
+  grid-column: 1 / -1;
+  padding: 0.45vw;
+  border: 1px solid #000;
+  background: #000;
+  color: #fff;
+  font-size: 0.55vw;
+  font-weight: 800;
+}
+
+.wf-transmute-run.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.wf-transmute-mod-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.4vw;
+  margin-top: 0.65vw;
+}
+
+.wf-transmute-mod {
+  display: flex;
+  min-height: 4.8vw;
+  padding: 0.48vw;
+  border: 1px solid #000;
+  flex-direction: column;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.14s ease, color 0.14s ease, border-width 0.14s ease;
+}
+
+.wf-transmute-mod:hover:not(.is-disabled),
+.wf-transmute-mod.is-selected {
+  border-width: 2px;
+  background: #000;
+  color: #fff;
+}
+
+.wf-transmute-mod.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.wf-transmute-mod span,
+.wf-transmute-mod small {
+  font-size: 0.42vw;
+}
+
+.wf-transmute-mod strong {
+  margin: auto 0 0.15vw;
+  font-size: 0.56vw;
+}
+
+/* =========================================================
+   Slide 23 — Forma UI
+   ========================================================= */
+
+.wf-forma-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  padding: 0.7vw;
+  flex-direction: column;
+  gap: 0.65vw;
+}
+
+.wf-forma-equipment {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.wf-forma-equipment > div {
+  padding: 0.5vw 0.65vw;
+  border-right: 1px solid #000;
+}
+
+.wf-forma-equipment > div:last-child {
+  border-right: 0;
+}
+
+.wf-forma-equipment span,
+.wf-forma-equipment strong {
+  display: block;
+}
+
+.wf-forma-equipment span {
+  font-size: 0.42vw;
+}
+
+.wf-forma-equipment strong {
+  margin-top: 0.15vw;
+  font-size: 0.58vw;
+}
+
+.wf-forma-slot-panel,
+.wf-forma-choice-panel {
+  padding: 0.65vw;
+}
+
+.wf-forma-slot-row {
+  display: flex;
+  margin-top: 0.6vw;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35vw;
+}
+
+.wf-forma-slot {
+  position: relative;
+  display: flex;
+  width: 5.05vw;
+  min-width: 0;
+  height: 5.6vw;
+  padding: 0.35vw;
+  border: 1px solid #000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.14s ease, color 0.14s ease, border-width 0.14s ease;
+}
+
+.wf-forma-slot:hover:not(:disabled),
+.wf-forma-slot.is-selected {
+  border-width: 2px;
+  background: #000;
+  color: #fff;
+}
+
+.wf-forma-slot.is-aura {
+  border-style: dashed;
+}
+
+.wf-forma-slot.is-exilus {
+  border-style: dotted;
+}
+
+.wf-forma-slot.is-locked {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.wf-forma-slot-index {
+  position: absolute;
+  top: 0.24vw;
+  left: 0.3vw;
+  font-size: 0.4vw;
+  font-weight: 800;
+}
+
+.wf-forma-symbol {
+  font-size: 1vw;
+}
+
+.wf-forma-slot small {
+  margin-top: 0.2vw;
+  font-size: 0.42vw;
+}
+
+.wf-forma-divider {
+  width: 1px;
+  height: 3.8vw;
+  background: #000;
+}
+
+.wf-forma-choice-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.65fr);
+  gap: 0.65vw;
+}
+
+.wf-forma-polarity-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.4vw;
+  margin-top: 0.6vw;
+}
+
+.wf-forma-polarity {
+  display: flex;
+  min-height: 4.3vw;
+  padding: 0.35vw;
+  border: 1px solid #000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.14s ease, color 0.14s ease, border-width 0.14s ease;
+}
+
+.wf-forma-polarity:hover:not(:disabled),
+.wf-forma-polarity.is-selected {
+  border-width: 2px;
+  background: #000;
+  color: #fff;
+}
+
+.wf-forma-polarity.is-current {
+  background: #f2f2f2;
+}
+
+.wf-forma-polarity.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.wf-forma-polarity b {
+  font-size: 0.9vw;
+}
+
+.wf-forma-polarity span {
+  margin-top: 0.18vw;
+  font-size: 0.4vw;
+  text-align: center;
+}
+
+.wf-forma-warning {
+  display: flex;
+  padding: 0.65vw;
+  flex-direction: column;
+  justify-content: center;
+  background: #f5f5f5;
+}
+
+.wf-forma-popup-label {
+  display: block;
+  margin: -0.65vw -0.65vw 0.6vw;
+  padding: 0.42vw 0.65vw;
+  background: #000;
+  color: #fff;
+  font-size: 0.48vw;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.wf-forma-warning > strong {
+  font-size: 0.62vw;
+  line-height: 1.35;
+}
+
+.wf-forma-warning p {
+  margin-top: 0.3vw;
+  font-size: 0.46vw;
+  line-height: 1.35;
+}
+
+.wf-forma-actions {
+  display: flex;
+  gap: 0.4vw;
+  margin-top: 0.6vw;
+}
+
+.wf-forma-actions button {
+  padding: 0.35vw 0.65vw;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  font-size: 0.5vw;
+  font-weight: 800;
+}
+
+.wf-forma-actions .is-primary {
+  background: #000;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .wf-transmute-body,
+  .wf-forma-choice-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .wf-transmute-slots {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wf-forma-slot-row {
+    flex-wrap: wrap;
+  }
+
+  .wf-forma-slot {
+    width: 11vw;
+    height: 12vw;
+  }
+
+  .wf-forma-divider {
+    display: none;
+  }
+}
+
