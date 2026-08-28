@@ -3815,3 +3815,20 @@ td {
   min-height: 0;
 }
 
+
+/* 10페이지 — Serration 카드 프리뷰를 6페이지 카드와 동일한 시각 크기로 보정 */
+.serration-data-slide .asset:has(.wf-mod-card-preview) .wf-mod-card-preview {
+  width: min(31%, 320px) !important;
+  max-width: 320px !important;
+  min-width: 0 !important;
+  aspect-ratio: 3 / 4 !important;
+}
+
+/* 프리뷰를 대시라인 중앙에 고정 */
+.serration-data-slide .asset:has(.wf-mod-card-preview) .wf-mod-card-preview-wrap {
+  width: 100% !important;
+  height: 100% !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
