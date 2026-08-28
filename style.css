@@ -3757,3 +3757,61 @@ td {
   }
 }
 
+/* =========================================================
+   UI WireFrame — dash-line 하단 확장
+   대상: 13, 14, 15, 18, 19, 20, 21, 22, 23 페이지
+   상단 위치는 유지하고, 아래 방향으로만 영역을 확장한다.
+   ========================================================= */
+
+.slide.active:has(
+  .wf-loadout-guide,
+  .wf-slot-preview-screen,
+  .wf-capacity-error-screen,
+  .wf-fusion-screen,
+  .wf-transmute-screen,
+  .wf-forma-screen
+) .slide-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+
+  /* 기존 3.2vw보다 2.2vw 더 아래로 확장 */
+  padding-bottom: 1vw !important;
+
+  overflow: hidden;
+}
+
+.slide.active:has(
+  .wf-loadout-guide,
+  .wf-slot-preview-screen,
+  .wf-capacity-error-screen,
+  .wf-fusion-screen,
+  .wf-transmute-screen,
+  .wf-forma-screen
+) .ui-layout,
+.slide.active:has(
+  .wf-loadout-guide,
+  .wf-slot-preview-screen,
+  .wf-capacity-error-screen,
+  .wf-fusion-screen,
+  .wf-transmute-screen,
+  .wf-forma-screen
+) .asset-pair {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.slide.active:has(
+  .wf-loadout-guide,
+  .wf-slot-preview-screen,
+  .wf-capacity-error-screen,
+  .wf-fusion-screen,
+  .wf-transmute-screen,
+  .wf-forma-screen
+) .asset {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
